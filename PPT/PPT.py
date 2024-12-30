@@ -5,7 +5,8 @@ paper="papel"
 scissors="tijeras"
 jugador_eleccion=None
 maquina_eleccion=None
-
+action1=None
+action2=None
 opciones = [rock, paper, scissors]
 
 def Eleccion_maquina():
@@ -15,26 +16,24 @@ def Eleccion_jugador():
     jugador_eleccion=input("R/P/T:  ")
     if   jugador_eleccion=="R":
         return rock
-    if   jugador_eleccion=="P":
+    elif   jugador_eleccion=="P":
         return paper
     else :
         return scissors
    
 
-def juego():
-    jugador=Eleccion_jugador()
-    maquina=Eleccion_maquina()
+def juego(action1, action2):
+    if action1 == action2:
+        print("Empate") 
+        return 1
 
-    print("La maquina eligío {} y tu elegiste {}".format(maquina, jugador))
-    
-    if jugador==maquina:
-        print("Empate")
-    elif (jugador == "piedra" and maquina == "tijeras") or \
-         (jugador == "papel" and maquina == "piedra") or \
-         (jugador == "tijeras" and maquina == "papel"):
-        print("¡Ganaste!")
+    elif (action1 == "piedra" and action2 == "tijeras") or \
+         (action1 == "papel" and action2 == "piedra") or \
+         (action1 == "tijeras" and action2 == "papel"):
+            print("¡Ganaste!")
+            return 2
     else:
         print("Perdiste")
+        return 0
 
     
-juego()
