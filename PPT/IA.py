@@ -9,6 +9,8 @@ NUM_opciones = len(opciones)
 HISTORY_WINDOW = 3  # Número de jugadas previas consideradas
 EXPLORATION_RATE = 0.1  # Probabilidad de exploración
 
+
+
 # Crear modelo
 def create_model():
     model = tf.keras.Sequential([
@@ -31,7 +33,7 @@ history_agent1 = []
 history_agent2 = []
 
 # Configuración
-num_games = 100
+num_games = 200
 batch_size = 32
 training_count = 0
 
@@ -72,7 +74,7 @@ for game in range(num_games):
     winner = juego(action1, action2)
 
     # Mostrar resultados del juego
-    print(f"Juego {game + 1}: Agente 1 ({opciones[action1]}) vs Agente 2 ({opciones[action2]}). Ganador: {winner}")
+
     if winner == 1:
         win_counts_agent1 += 1
 
@@ -98,7 +100,7 @@ for game in range(num_games):
         agent1.train_on_batch(x_agent1, y_agent1)
         agent2.train_on_batch(x_agent2, y_agent2)
         training_count += 2
-
+    
 # Medir tiempo total
 end_time = time.time()
 training_duration = end_time - start_time
@@ -107,3 +109,10 @@ training_duration = end_time - start_time
 print(f"\nEntrenamiento completado en {training_duration:.2f} segundos.")
 print(f"Modelos entrenados {training_count} veces.")
 print(f"Victorias del agente 1: {win_counts_agent1} de {num_games} juegos.")
+# Guardar el modelo de agente 1
+agent1.save("agent1_model.h5")
+
+# Guardar el modelo de agente 2
+agent2.save("agent2_model.h5")
+
+print("Modelos guardados con éxito.")

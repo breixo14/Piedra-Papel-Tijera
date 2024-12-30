@@ -24,16 +24,13 @@ def Eleccion_jugador():
 
 def juego(action1, action2):
     if action1 == action2:
-        print("Empate") 
         return 1
 
     elif (action1 == "piedra" and action2 == "tijeras") or \
          (action1 == "papel" and action2 == "piedra") or \
          (action1 == "tijeras" and action2 == "papel"):
-            print("¡Ganaste!")
             return 2
     else:
-        print("Perdiste")
         return 0
 
     
