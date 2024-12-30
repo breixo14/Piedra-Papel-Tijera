@@ -33,7 +33,7 @@ history_agent1 = []
 history_agent2 = []
 
 # Configuración
-num_games = 200
+num_games = 10000
 batch_size = 32
 training_count = 0
 
